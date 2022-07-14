@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+/*==========　詳細ページ専用　==========*/
+.return_icon{
+    display: block;
+}
+.title_field{
+    grid-template-columns:1fr 80px;
+}
+@media screen and (max-width: 800px) {
+    .title_field_title img{
+        display: none;
+    }
+}
+.sub_title_field{
+    display:block;
+    text-align: left;
+    align-items: center;
+    justify-content: center;
+    margin: auto 0;
+}
+.sub_title_field h2{
+    color: white;
+    font-size: 22px;
+    font-weight: 500;
+}
+/* ====================ログイン==================== */
+.modal_title{
+   margin: 10px 30px;
+   padding: 0;
+   font-size: 26px;
+}
+.modal_body{
+   padding: 0 40px;
+   font-size: 18px;
+}
+form label{
+    font-weight: 900;
+}
+form input, form textarea, form select{
+    width: 100%;
+    padding: 10px 15px;
+    margin: 10px auto;
+    border-radius: 3px;
+    border: 2px solid #bbb;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+
+form input[type="submit"]{
+    background: #333;
+    color: white;
+    margin-top: 40px;
+    border-radius: 15px;
+}
+.modal_text{
+    display: block;
+    margin:  10px 0;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+}

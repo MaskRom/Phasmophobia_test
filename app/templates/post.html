@@ -1,0 +1,52 @@
+{% load relative_time %}<!--フォルダ名-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'detail.css' %}">
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="header_item title_field">
+            <div class="title_field_title">
+                <a href="/"><img src="../static/img/background/phasmophobia_logo - コピー.png" alt=""></a>
+                <h1>Phasmophobia　日本語コミュニティ&#x1f1ef;&#x1f1f5;</h1>
+            </div>
+            <a href="index.html" class="return_icon">&larr;</a>
+        </div>
+        <div class="header_item sub_title_field">
+            <h2>投稿</h2>
+        </div>
+        <div class="header_item account_field">
+            <div class="account_field_item" style="height: 45px;">
+
+            </div>
+            <div class="account_field_item">
+                <a href="{% url 'login' %}" class="account_login">ログイン</a>
+                <a href="{% url 'signup' %}" class="account_register">新規登録</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="mein_item"></div>
+        <div class="mein_item mein_mein_field">
+            <div class="modal_header">
+                
+                <span class="modal_close" style="display: none;">&times;</span>
+            </div>
+            <div class="modal_body">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">
+                </form>
+            </div>
+        </div>
+        <div class="mein_item"></div>
+    </main>
+</body>
+</html>

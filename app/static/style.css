@@ -1,0 +1,549 @@
+@charset "UTF-8";
+/*標準
+border = #ccc solid 1px;
+
+
+*/
+
+* {
+    margin : 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(20, 20, 20);
+    position: relative;
+}
+
+
+@media screen and (max-width: 1300px) {
+    .title_field_title h1,.account_login,.account_register{
+        display: none;
+    }
+}
+
+
+
+/*==========　固定ヘッダー　==========*/
+header {
+    position: fixed;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: minmax(85px, 1fr) minmax(0, 450px) minmax(85px, 1fr);
+    width: 100%;
+    height: 75px;
+    background-color: rgba(225, 225, 225, 0.3);
+    background-color:black;
+    backdrop-filter: blur(18px);
+}
+.header_item {
+    text-align: center;
+}
+/*==========　固定ヘッダー左　==========*/
+
+
+.title_field{
+    display: grid;
+    grid-template-columns:1fr 0;
+    height: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.title_field_title {
+    display: flex;
+    text-align: left;
+    align-items: center;
+}
+.title_field_title img{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    transition: 0.1s;
+}
+.title_field_title img:hover{
+    background: rgba(255, 255, 255, 0.1);
+}
+.title_field_title h1{
+    font-size: 18px;
+    font-weight: 100;
+    color: #ddd;
+}
+
+.return_icon{
+    font-weight: 900;
+    font-size: 22px;
+    color: white;
+    width : 30px;
+    height: 30px;
+    padding: 10px;
+    border-radius: 50%;
+    text-decoration: none;
+}
+.return_icon:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/*==========　固定ヘッダー右　==========*/
+.account_field{
+    display: grid;
+    grid-template-columns:100px 1fr;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.account_field_item{
+    height: auto;
+}
+.account_login{
+    margin-right: 10px;
+    text-decoration: none;
+    color: #ddd;
+}
+.account_register{
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    background: linear-gradient(to bottom, #333, #333);
+    color: #ddd;
+}
+.account_field img{
+    width : 43px;
+    height: 43px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+/*==========　アカウントメニュー　==========*/
+#account_icon{
+        display: inline-block;
+        cursor: pointer;
+}
+.account_menu_field{
+    right: 202px;
+    position: relative;
+    background: white;
+    border: #ccc solid 2px;
+    border-top: none;
+    width: 275px;
+    display: none;
+}
+.block{
+    display: block;
+}
+.account_menu_item{
+    display: block;
+    padding: 10px;
+    text-align: left;
+    font-size: 18px;
+    color: black;
+    text-decoration: none;
+}
+.account_menu_item:hover{
+    background: #eee;
+}
+.account_menu_account{
+    display: flex;
+    border-bottom: #ccc solid 1.5px;
+}
+.account_menu_account:hover{
+    background: white;
+}
+.account_menu_account a{
+    font-size: 14px;
+    color: dodgerblue;
+}
+.account_menu_account img{
+    width : 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.account_menu_account_text{
+    margin-left: 10px;
+    text-align: left;
+}
+
+
+
+/*==========　固定ヘッダー中央　==========*/
+.search_field {
+    width: 100%;
+    position: relative;
+    margin: auto;
+    text-align: center;
+}
+.search_bar{
+    position: relative;
+}
+.search_bar input[type="search"] {
+    width        : 100%;
+    padding      : 10px 50px;
+    border-radius: 50px;
+    font-size    : 20px;
+    border: none;
+    background: whitesmoke;
+}
+.search_bar input[type="search"]:focus {
+    outline :solid 2px deepskyblue;
+    background: #eee;
+}
+.search_bar input[type="image"] {
+    position: absolute;
+    width: 38px;
+    top  : 3px;
+    left : 10px;
+}
+
+
+
+
+
+/*==========　ナヴィゲーション　==========*/
+nav {
+    position: fixed;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr minmax(0, 600px) 1fr;
+    width: 100%;
+    
+    top: 75px;
+}
+.top_nav {
+    width: 100%;
+    max-width: 750px;
+    display: flex;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    border-bottom: #ccc solid 1px;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+}
+.nav_item {
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    color:#333;
+    font-weight: 900;
+    font-size: 18px;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    padding: 4px 0 0 0;
+    transition: 100ms;
+}
+.post img{
+    background: linear-gradient(to bottom, darkorchid, springgreen);
+}
+.nav_item:hover{
+    opacity: 0.3;
+}
+.nav_item img {
+    width : 20px;
+    height: 20px;
+    background-color: #333;
+    padding: 5px;
+    border-radius: 5px;
+}
+#select {
+    opacity: 0.3;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr minmax(0, 600px) 1fr;
+    height: 100vh;
+}
+.mein_mein_field {
+    background-color: whitesmoke;
+    padding-top: 145px;
+}
+/*==========　スライドショー ==========*/
+ /* Remove the default button styling in all browsers */
+ button{
+    border-style: none;
+}
+.slick-list{
+    position: relative;
+
+    display: block;
+    overflow: hidden;
+
+    margin: 0;
+    padding: 0;
+}
+.slick-list:focus
+{
+    outline: none;
+}
+.slick-list.dragging
+{
+    cursor: pointer;
+    cursor: hand;
+}
+.slick-slide{
+    display: none;
+    float: left;
+
+    height: 100%;
+    min-height: 1px;
+}
+[dir='rtl'] .slick-slide{
+    float: right;
+}
+.slick-slide img{
+    display: block;
+}
+.slick-slide.slick-loading img{
+    display: none;
+}
+.slick-slide.dragging img{
+    pointer-events: none;
+}
+.slick-initialized .slick-slide{
+    display: block;
+}
+.slick-loading .slick-slide{
+    visibility: hidden;
+}
+.slick-vertical .slick-slide{
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+}
+.slick-arrow.slick-hidden {
+    display: none;
+}
+/*==================================================
+スライダーのためのcss
+===================================*/
+.slider {
+    position:relative;
+    /*↑z-indexの値をh1のz-indexの値よりも小さくして背景に回す*/
+    height: 250px;/*スライダー全体の縦幅を画面の高さいっぱい（100vh）にする*/
+    max-width: 650px;
+}
+.slider a{
+    text-decoration: none;
+}
+/*　背景画像設定　*/
+.slider-item01 {
+    background:url("img/background/phasmophobia.webp");
+}
+.slider-item02 {
+    background:url("img/background/f461c860-06e1-11ec-af6f-7682b5b3a2a1.jpg");
+}
+.slider-item03 {
+    background:url("img/background/Phasmophobia.jpg");
+}
+.slider-item {
+    width: 700px;/*各スライダー全体の横幅を画面の高さいっぱい（100%）にする*/
+    height:250px;/*各スライダー全体の縦幅を画面の高さいっぱい（100vh）にする*/
+    background-repeat: no-repeat;/*背景画像をリピートしない*/
+    background-position: center;/*背景画像の位置を中央に*/
+    background-size: cover;/*背景画像が.slider-item全体を覆い表示*/
+}
+/*矢印の設定*/
+/*戻る、次へ矢印の位置*/
+.slick-prev, .slick-next {
+    position: absolute;/*絶対配置にする*/
+	z-index: 1;
+    top: 45%;
+    cursor: pointer;/*マウスカーソルを指マークに*/
+    outline: none;/*クリックをしたら出てくる枠線を消す*/
+    border-top: 2px solid white;/*矢印の色*/
+    border-right: 2px solid white;/*矢印の色*/
+    opacity: 0.5;
+    height: 15px;
+    width: 15px;
+}
+.slick-prev {/*戻る矢印の位置と形状*/
+    left:2.5%;
+    transform: rotate(-135deg);
+}
+.slick-next {/*次へ矢印の位置と形状*/
+    right:2.5%;
+    transform: rotate(45deg);
+}
+/*ドットナビゲーションの設定*/
+.slick-dots {
+	position: relative;
+	z-index: 3;
+    text-align:center;
+	margin: -20px 0 0 0;
+}
+.slick-dots li {
+    display:inline-block;
+	margin:0 5px;
+}
+.slick-dots button {
+    color: transparent;
+    outline: none;
+    width:8px;/*ドットボタンのサイズ*/
+    height:8px;/*ドットボタンのサイズ*/
+    display:block;
+    border-radius:50%;
+    background:#ccc;/*ドットボタンの色*/
+}
+.slick-dots .slick-active button{
+    background:deepskyblue;/*ドットボタンの現在地表示の色*/
+}
+/*==========　スライド内トレンド枠　==========*/
+.in_the_image {
+    width: 100%;
+    height: 100%;
+    padding-top: 150px;
+}
+.trend_top_text{
+    font-size: 14px;
+    text-align: left;
+    margin-left :20px;
+    color: #777;
+}
+.trend_top{
+    font-weight: 900;
+    color: white;
+    font-size: 50px;
+    margin-left: 10px;
+}
+
+
+/*==========　h2タイトル　==========*/
+.h2_title{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+.h2_title p{
+    font-size: 20px;
+    margin: 8px;
+}
+.h2_title img{
+    background-color: #333;
+    width : 15px;
+    height: 15px;
+    border-radius: 5px;
+    padding: 5px;
+}
+.h2_title_post img{
+    background: linear-gradient(to bottom, darkorchid, springgreen);
+}
+/*==========　投稿リスト　==========*/
+.post_field{
+    position: relative;
+    width: 100%;
+    display: flex;
+    background: whitesmoke;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 0px;
+    transition: all 0.1s;
+}
+.post_field + .post_field {
+    border-top: none;
+}
+.post_field:hover {
+    background: #eee;
+}
+.user_icon {
+    border-radius: 100%;
+    height: 50px;
+    width : 50px;
+    margin: 3px 0 0 3px ;
+}
+.three_icon{
+    position: absolute;
+    cursor :pointer;
+    border-radius :100%;
+    padding: 5px;
+    height: 20px;
+    top: 2px;
+    right: 15px;
+    opacity: 0.8;
+    border-radius: 100%;
+}
+.three_icon:hover{
+    background-color: #ccc;
+}
+.content{
+    font-size: 16px;
+    margin: 0 10px 0 10px;
+}
+.user_name_field{
+    display: flex;
+}
+.user_name{
+    font-weight : 900;
+}
+.posted_date{
+    margin: 0 10px;
+    color: #777;
+    font-weight : 900;
+}
+.user_message{
+    display: inline-block;
+}
+.user_post_img {
+    border-radius: 15px;
+    width: 100%;
+    height: 350px;
+    margin-top: 20px;
+    object-fit: cover;
+}
+.state{
+    display: flex;
+    padding: 15px 0;
+}
+.heart, .comment{
+    display: flex;
+    cursor :pointer;
+    margin-right: 40px;
+}
+
+.state_icon{
+    height: 20px;
+    width : 20px;
+    margin-right :5px;
+    background-size: cover;
+}
+
+.heart .state_icon{
+    background-image: url(img/icon/heart_icon.png);
+}
+.check_heart .state_icon{
+    background-image: url(img/icon/heart_check_icon.png);
+}
+
+.check_heart .state_count{
+    color: deeppink;
+}
+
+.state_count{
+    height: 20px;
+    color: #777;
+    font-size: 15px;
+}
+
+.comment_top{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.user_comment_icon{
+    background : rgb(196, 160, 0);
+    border-radius: 100%;
+    height: 40px;
+    width : 40px;
+}
+.comment_user_name{
+    font-weight: 900;
+    font-size: 14px;
+}
+.comment_message{
+    font-size: 14px;
+}
+.comment_display_text{
+    color: rgb(29, 155, 240);
+    text-decoration: none;
+    width: 100%;
+}

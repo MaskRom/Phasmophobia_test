@@ -1,0 +1,198 @@
+{% load relative_time %}<!--フォルダ名-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="header_item title_field">
+            <div class="title_field_title">
+                <a href="/"><img src="{% static 'img/background/phasmophobia_logo - コピー.png' %}" alt=""></a>
+                <h1>Phasmophobia　日本語コミュニティ&#x1f1ef;&#x1f1f5;</h1>
+            </div>
+        </div>
+        <div class="header_item search_field">
+            <form method="get" action="#" class="search_bar">
+                <input type="search" size="25" placeholder="キーワード検索">
+                <input type="image" src="{% static 'img/icon/search_icon.png' %}" value="&#xf002">
+            </form>
+        </div>
+        <div class="header_item account_field">
+            <div class="account_field_item" style="height: 45px;">
+                {% if user.icon %}
+                <img src="{{ user.icon.url }}" id="account_icon" alt="">
+                {% else %}
+                <img src="{% static 'img/icon/user_icon.png' %}" id="account_icon" alt="">
+                {% endif %}
+                <div class="account_menu_field ">
+                    <div class="account_menu_item account_menu_account">
+                        {% if user.icon %}
+                        <img src="{{ user.icon.url }}" alt="">
+                        {% else %}
+                        <img src="{% static 'img/icon/user_icon.png' %}" id="account_icon" alt="">
+                        {% endif %}
+                        <div class="account_menu_account_text">
+                            <p class="user_name">{{ user }}</p>
+                            <a href="{% url 'logout' %}" class="">ログアウト</a>
+                        </div>
+                    </div>
+                    <a href="#" class="account_menu_item">マイページ</a>
+                    <a href="#" class="account_menu_item">プロフィールを編集</a>
+                </div>
+            </div>
+            <div class="account_field_item">
+                <a href="{% url 'login' %}" class="account_login">ログイン</a>
+                <a href="{% url 'signup' %}" class="account_register">新規登録</a>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <div></div>
+        <div class="top_nav">
+            <a id="select" class="nav_item home" href="#">
+                <img src="../static/img/icon/home_icon.png" alt="">
+                <p>ホーム</p></a>
+            <a id="" class="nav_item post" href="#">
+                <img src="../static/img/icon/hashtag_icon.png" alt="">
+                <p>投稿</p></a>
+            <a id="" class="nav_item room" href="#">
+                <img src="../static/img/icon/joboffer_icon.png" alt="">
+                <p>調査部屋</p></a>
+            <a id="" class="nav_item wiki" href="#">
+                <img src="../static/img/icon/book_icon.png" alt="">
+                <p>wiki</p></a>
+        </div>
+    </nav>
+    <div></div>
+    <main>
+        <div class="mein_item"></div>
+        <div class="mein_item mein_mein_field">
+            <div class="slide_show">
+                <div class="wrapper">
+                    <ul class="slider">
+                        <li class="slider-item slider-item01">
+                            <a href="#">
+                                <div class="in_the_image">
+                                    <p class="trend_top_text">最近のトレンド</p>
+                                    <p class="trend_top">#モーロイ</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="slider-item slider-item02">
+                            <a href="#">
+                                <div class="in_the_image">
+                                    <p class="trend_top_text">最近のトレンド</p>
+                                    <p class="trend_top">#セーイ</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="slider-item slider-item03">
+                            <a href="#">
+                                <div class="in_the_image">
+                                    <p class="trend_top_text">最近のトレンド</p>
+                                    <p class="trend_top">#デオヘン</p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <h2 class="h2_title h2_title_post">
+                <img src="../static/img/icon/hashtag_icon.png" alt="">
+                <p>最新の投稿</p>
+            </h2>
+{% for obj in object_list reversed %}
+            <div class="post_field">
+                <img class="three_icon" src="{% static 'img/icon/three_icon.png' %}" alt="">
+    {% if obj.user.icon %}
+                <img src="{{ obj.user.icon.url }}" class="user_icon">
+    {% else %}
+                <img src="{% static 'img/icon/user_icon.png' %}" class="user_icon">
+    {% endif %}
+                <div class="content">
+                    <div class="user_name_field">
+                        <p class="user_name">
+                            {{ obj.user }}
+                        </p>
+                        <p class="posted_date">
+                            {{ obj.created_date | relative_time }}
+                        </p>
+                    </div>
+                    <p class="user_message">
+                        {{ obj.body }}
+                    </p><br>
+                    {% for tag in obj.tags.all %}
+                    <a href="" style="color:dodgerblue;text-decoration: none;">#{{ tag }}</a>
+                    {% endfor %}
+                    <!--<img class="user_post_img" src="" alt="">-->
+                    <div class="state">
+                        <div class="heart {{ obj.id | user_favo:user }}" id="heart{{ obj.id }}" data-catid="{{ obj.id }}">
+                            <div class="state_icon"></div>
+                            <div class="state_count" id="heart_sum{{ obj.id }}">{{ obj.id | favo_counta }}</div>
+                        </div>
+                        <div class="comment">
+                            <img class="state_icon" src="{% static 'img/icon/comment_icon.png' %}" alt="">
+                            <div class="state_count"></div>
+                        </div>
+                    </div>
+                    <a href="" class="comment_display_text">スレッドを表示</a>
+                </div>
+            </div>
+{% endfor %}
+        <div class="mein_item"></div>
+    </main>
+
+    <script>
+        $(document).on('click',function(e) {
+            if(!$(e.target).closest('#account_icon').length) {
+                if(!$(e.target).closest('.account_menu_account').length){
+                    if($(".account_menu_field").hasClass("block")){
+                        $(".account_menu_field").toggleClass("block");
+                    }
+                }
+            } else {
+                $(".account_menu_field").toggleClass("block");
+            }
+        });
+    </script>
+
+<script type="text/javascript"> 
+    $('.heart').click(function(){ 
+        var id;
+        var heart_sum;
+        id = $(this).attr("data-catid");
+        heart_sum = Number($("#heart_sum"+id).text());
+
+        $.ajax( 
+            {
+                type:"GET", 
+                url: "like",
+                data:{post_id: id,},
+                success: function(data) {
+                    if(data == "true"){
+                        $('#heart'+id).addClass('check_heart');
+                        $("#heart_sum"+id).text(heart_sum + 1);
+                    } else {
+                        $('#heart'+id).removeClass('check_heart');
+                        if (heart_sum > 1){
+                            $("#heart_sum"+id).text(heart_sum - 1);
+                        } else {
+                            $("#heart_sum"+id).text("");
+                        }
+                    }
+                }
+
+            }) 
+        });
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-1/js/6-1-1.js"></script>
+</body>
+</html>
